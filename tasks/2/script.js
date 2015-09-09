@@ -1,16 +1,16 @@
 /*
     Exercise 2
 */
-var helloWorld = React.createClass({
+var Hello = React.createClass({
   render: function() {
     return (<div>
-            Hellow {this.props.name ? this.props.name : 'World'}!
+            Hello {this.props.name ? this.props.name : 'World'}!
             </div>);
   }
 });
 
-var helloWorldElement = React.createElement(helloWorld, { name: 'Artur' })
-var helloWorldElement2 = React.createElement(helloWorld)
+var hello = React.createElement(Hello, { name: 'Artur' })
+var helloDefault = React.createElement(Hello)
 
-React.render(helloWorldElement, document.getElementById('main'));
-React.render(helloWorldElement2, document.getElementById('main2'));
+React.render(hello, document.getElementById('name'));
+React.render(helloDefault, document.getElementById('default-name'));
