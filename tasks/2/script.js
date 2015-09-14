@@ -18,13 +18,11 @@ React.render(helloDefault, document.getElementById('default-name'));
 
 var Helloes = React.createClass({
   render: function() {
-    var names = this.props.names.map(function(name) {
-      React.createElement(Hello, { name: name })
-    })
-
     return (
       <div>
-      {names}
+      {this.props.names.map(function(name){
+        return <Hello name={name}></Hello>
+      })}
       </div>
     );
   }
