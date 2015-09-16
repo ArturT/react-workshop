@@ -19,3 +19,27 @@ var libraries = [
     { name: 'Koa', url: 'http://koajs.com/'},
 ];
 
+var SearchItem = React.createClass({
+  render: function() {
+    return (<li>
+            <a href={this.props.item.url}>{this.props.item.name}</a>
+           </li>)
+  }
+});
+
+var Search = React.createClass({
+  render: function() {
+    return (<div>
+            <input type="text" />
+            <ul>
+            {this.props.items.map(function(item) {
+              return <SearchItem item={item}></SearchItem>
+            })}
+            </ul>
+           </div>)
+  }
+});
+
+var search = React.createElement(Search, { items: libraries })
+
+React.render(search, document.getElementById('search'))
