@@ -28,11 +28,20 @@ var SearchItem = React.createClass({
 });
 
 var Search = React.createClass({
+  getInitialState: function() {
+    return { text: '' }
+  },
+  onChange: function(e) {
+    this.setState({ text: e.target.value })
+  },
   render: function() {
     return (<div>
-            <input type="text" />
+            <input type="text" onChange={this.onChange} value={this.state.text} />
             <ul>
-            {this.props.items.map(function(item) {
+            {this.props.items.filter(function(item) {
+              var pattern = new RegExp(this.state.text, 'i');
+              return item.name.match(pattern);
+            }, this).map(function(item) {
               return <SearchItem item={item}></SearchItem>
             })}
             </ul>
